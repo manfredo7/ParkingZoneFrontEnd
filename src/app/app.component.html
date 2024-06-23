@@ -1,0 +1,109 @@
+<mat-toolbar color="primary" *ngIf="verificar()">
+    <div class="diviconpkz">
+      <img src="assets/icon_pkz.png" [routerLink]="['/homes']" routerLinkActive="router-link-active"  alt="icono" class="iconpkz">
+    </div>
+
+    <button mat-button [matMenuTriggerFor]="menuMembresia"  class="menuEntidad">
+      <mat-icon>menu</mat-icon><span class="bold-text">Membresias</span>
+    </button>
+    <button
+      mat-button [matMenuTriggerFor]="menuTestacionamiento" class="menuEntidad">
+      <mat-icon>menu</mat-icon><span class="bold-text">Tipos de estacionamiento</span>
+    </button>
+    <button
+      mat-button [matMenuTriggerFor]="menuEstacionamiento"class="menuEntidad">
+      <mat-icon>menu</mat-icon><span class="bold-text">Estacionamientos</span>
+    </button>
+    <button
+    mat-button [matMenuTriggerFor]="menuTpago"class="menuEntidad">
+    <mat-icon>menu</mat-icon><span class="bold-text">Tipos de pago</span>
+  </button>
+  <button
+  mat-button [matMenuTriggerFor]="menuPago" class="menuEntidad">
+  <mat-icon>menu</mat-icon><span class="bold-text">Pagos</span>
+</button>
+<button
+mat-button [matMenuTriggerFor]="menuUser" class="menuEntidad">
+<mat-icon>menu</mat-icon><span class="bold-text">Usuarios</span>
+</button>
+<button
+mat-button [matMenuTriggerFor]="menuRole" class="menuEntidad">
+<mat-icon>menu</mat-icon><span class="bold-text">Roles</span>
+</button>
+<button
+mat-button [matMenuTriggerFor]="menuComentario" class="menuEntidad">
+<mat-icon>menu</mat-icon><span class="bold-text">Comentarios</span>
+</button>
+<button
+mat-button [matMenuTriggerFor]="menuReportes" class="menuEntidad">
+<mat-icon>menu</mat-icon><span class="bold-text">Reportes</span>
+</button>
+
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menuSalir" class="large-icon-button">
+    <div class="icon-container"><mat-icon class="large-icon">account_circle</mat-icon></div>
+  </button>
+</mat-toolbar>
+
+
+<mat-menu #menuMembresia="matMenu">
+  <button mat-menu-item routerLink="/membresia">Listar</button>
+  <button mat-menu-item routerLink="/membresia/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuTestacionamiento="matMenu">
+  <button mat-menu-item routerLink="/testacionamiento">Listar</button>
+  <button mat-menu-item routerLink="/testacionamiento/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuEstacionamiento="matMenu">
+  <button mat-menu-item routerLink="/estacionamiento">Listar</button>
+  <button mat-menu-item routerLink="/estacionamiento/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuTpago="matMenu">
+  <button mat-menu-item routerLink="/tpago">Listar</button>
+  <button mat-menu-item routerLink="/tpago/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuPago="matMenu">
+  <button mat-menu-item routerLink="/pago">Listar</button>
+  <button mat-menu-item routerLink="/pago/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuUser="matMenu">
+  <button mat-menu-item routerLink="/usuario">Listar</button>
+  <button mat-menu-item routerLink="/usuario/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuRole="matMenu">
+  <button mat-menu-item routerLink="/role">Listar</button>
+  <button mat-menu-item routerLink="/role/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuComentario="matMenu">
+  <button mat-menu-item routerLink="/comentario">Listar</button>
+  <button mat-menu-item routerLink="/comentario/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/pagoq1">ReportePago01</button>
+  <button mat-menu-item routerLink="/pagoq2">ReportePago02</button>
+  <button mat-menu-item routerLink="/mxe">R02mxeB</button>
+  <button mat-menu-item routerLink="/mhrxe">R01mxeB</button>
+  <button mat-menu-item routerLink="/userq1">UserQ1</button>
+  <button mat-menu-item routerLink="/userq2">UserQ2</button>
+
+</mat-menu>
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
+
+<router-outlet></router-outlet>

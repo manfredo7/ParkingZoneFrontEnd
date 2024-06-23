@@ -1,0 +1,39 @@
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="logo-container">
+        <img src="assets/icon_pkz.png" alt="Logo de la empresa" class="logo" />
+      </div>
+      <h2>Inicie sesión</h2>
+      <form>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            placeholder="Username"
+            [(ngModel)]="username"
+            name="username"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            [(ngModel)]="password"
+            name="password"
+          />
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary" (click)="login()">
+          Ingresar
+        </button>
+      </form>
+      <div class="additional-options">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+    </div>
+  </div>
+</body>

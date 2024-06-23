@@ -1,0 +1,39 @@
+<div class="title-container">
+  <h1 class="title">Registro de Roles</h1>
+</div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Estacionamiento</mat-label>
+      <mat-select formControlName="estacionamiento">
+        <mat-option
+          *ngFor="let estacionamiento of listaEstacionamiento"
+          [value]="estacionamiento.idEstacionamiento"
+        >
+          {{ estacionamiento.nombreEstacionamiento }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <input matInput formControlName="descripcion" />
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Puntuacion</mat-label>
+      <input matInput formControlName="puntuacion" />
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary">Registrar</button>
+    <button mat-raised-button color="warn" routerLink="/comentario">
+      Cancelar
+    </button>
+  </form>
+</div>

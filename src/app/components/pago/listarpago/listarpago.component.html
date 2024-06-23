@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="title-container">
+    <h1 class="title">Lista de Pagos</h1>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    multiTemplateDataRows
+  >
+    <!-- Monto Column -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>Monto</th>
+      <td mat-cell *matCellDef="let element">{{ element.montoPago }}</td>
+    </ng-container>
+
+    <!-- Fecha y Hora Column -->
+    <ng-container matColumnDef="fechahora">
+      <th mat-header-cell *matHeaderCellDef>Fecha y Hora</th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element.fechahoraPago | date : "dd/MM/yyyy HH:mm:ss" : "America/Peru"
+        }}
+      </td>
+    </ng-container>
+
+    <!-- Detalles Column -->
+    <ng-container matColumnDef="detalles">
+      <th mat-header-cell *matHeaderCellDef>Detalles</th>
+      <td mat-cell *matCellDef="let element" class="expand-button-cell">
+        <button
+          mat-icon-button
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        >
+          <mat-icon>{{
+            expandedElement === element ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="accion01">
+      <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="sync"
+          color="primary"
+          [routerLink]="['ediciones', element.idPago]"
+        ></mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accion02">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="delete"
+          color="warn"
+          (click)="eliminar(element.idPago)"
+        ></mat-icon>
+      </td>
+    </ng-container>
+
+    <!-- Expanded Detail Row -->
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="displayedColumns.length"
+      >
+        <div class="example-element-detail" *ngIf="expandedElement === element">
+          <div><strong>Código: </strong> {{ element.idPago }}</div>
+          <div><strong>Documento: </strong> {{ element.documentoPago }}</div>
+          <div>
+            <strong>Tipo Pago: </strong> {{ element.tpago.descripcionTpago }}
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- Data Rows -->
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="element-row"
+      [class.expanded-row]="expandedElement === row"
+    ></tr>
+
+    <!-- Expanded Content Row -->
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="100"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

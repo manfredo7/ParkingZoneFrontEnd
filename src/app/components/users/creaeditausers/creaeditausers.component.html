@@ -1,0 +1,104 @@
+<div class="title-container">
+  <h1 class="title">Registro de Usuarios</h1>
+</div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+    <div class="form-columns">
+      <div class="form-column">
+        <mat-form-field *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" readonly />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username2" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password2" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enabled</mat-label>
+          <mat-select formControlName="enabled">
+            <mat-option value="true">TRUE</mat-option>
+            <mat-option value="false">FALSE</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="fregistro"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Apellido Paterno</mat-label>
+          <input matInput formControlName="apellidoP" />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-form-field>
+          <mat-label>Apellido Materno</mat-label>
+          <input matInput formControlName="apellidoM" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="fnacimiento"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="correo" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Membresia</mat-label>
+          <mat-select formControlName="membresia">
+            <mat-option
+              *ngFor="let membresia of listaMembresia"
+              [value]="membresia.idMembresia"
+            >
+              {{ membresia.idMembresia }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary">Registrar</button>
+      <button mat-raised-button color="warn" routerLink="/usuario">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

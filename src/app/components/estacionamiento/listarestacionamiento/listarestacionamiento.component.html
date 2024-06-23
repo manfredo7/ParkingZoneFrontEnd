@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="title-container">
+    <h1 class="title">Lista de estacionamientos</h1>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    multiTemplateDataRows
+  >
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nombreEstacionamiento }}
+      </td>
+    </ng-container>
+
+    <!-- Dirección Column -->
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef>Dirección</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.direccionEstacionamiento }}
+      </td>
+    </ng-container>
+
+    <!-- Capacidad Column -->
+    <ng-container matColumnDef="capacidad">
+      <th mat-header-cell *matHeaderCellDef>Capacidad</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.capacidadEstacionamiento }}
+      </td>
+    </ng-container>
+
+    <!-- Horario Operativo Column -->
+    <ng-container matColumnDef="hoperativo">
+      <th mat-header-cell *matHeaderCellDef>Horario Operativo</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.horarioperativoEstacionamiento }}
+      </td>
+    </ng-container>
+
+    <!-- Detalles Column -->
+    <ng-container matColumnDef="detalles">
+      <th mat-header-cell *matHeaderCellDef>Detalles</th>
+      <td mat-cell *matCellDef="let element" class="expand-button-cell">
+        <button
+          mat-icon-button
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        >
+          <mat-icon>{{
+            expandedElement === element ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="accion01">
+      <th mat-header-cell *matHeaderCellDef>Update</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="sync"
+          color="primary"
+          [routerLink]="['ediciones', element.idEstacionamiento]"
+        ></mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accion02">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="delete"
+          color="warn"
+          (click)="eliminar(element.idEstacionamiento)"
+        ></mat-icon>
+      </td>
+    </ng-container>
+
+    <!-- Expanded Detail Row -->
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="displayedColumns.length"
+      >
+        <div class="example-element-detail" *ngIf="expandedElement === element">
+          <div>
+            <strong>Tarifa: </strong> {{ element.tarifaEstacionamiento }}
+          </div>
+          <div>
+            <strong>Ventajas: </strong> {{ element.ventajasEstacionamiento }}
+          </div>
+          <div>
+            <strong>Desventajas: </strong>
+            {{ element.desventajasEstacionamiento }}
+          </div>
+          <div>
+            <strong>Tipo Estacionamiento: </strong>
+            {{ element.testacionamiento.descripcionTestacionamiento }}
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- Data Rows -->
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="element-row"
+      [class.expanded-row]="expandedElement === row"
+    ></tr>
+
+    <!-- Expanded Content Row -->
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="100"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

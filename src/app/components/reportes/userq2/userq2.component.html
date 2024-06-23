@@ -1,0 +1,45 @@
+<div class="title-container"></div>
+<div class="container">
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field class="form-field">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="finicio" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Fecha de fin</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="ffin" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker2"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="handleSubmit()">
+      Buscar
+    </button>
+  </form>
+</div>
+
+<br />
+
+<div class="title-container">
+  <h1 class="title">Total de usuarios registrados en el rango de tiempo</h1>
+</div>
+<div class="container chart-container">
+  <canvas
+    baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+    [type]="barChartType"
+  >
+  </canvas>
+</div>

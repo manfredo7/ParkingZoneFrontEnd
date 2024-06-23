@@ -1,0 +1,45 @@
+<div class="title-container">
+  <h1 class="title">Registro de Tipos de estacionamiento</h1>
+</div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <mat-form-field *ngIf="edicionte">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <mat-select formControlName="descripcion">
+        <mat-option *ngFor="let d of descripcion" [value]="d.value">
+          {{ d.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+        >Debe seleccionar una descripción.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Medida(m2)</mat-label>
+      <input matInput formControlName="medida" />
+
+      <mat-error *ngIf="form.get('medida')?.hasError('required')"
+        >La medida es obligatoria.</mat-error
+      >
+
+      <mat-error *ngIf="form.get('medida')?.hasError('min')"
+        >EL valor mínimo es 1.</mat-error
+      >
+
+      <mat-error *ngIf="form.get('medida')?.hasError('pattern')"
+        >Ingrese un número válido.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary">Registrar</button>
+    <button mat-raised-button color="warn" routerLink="/testacionamiento">
+      Cancelar
+    </button>
+  </form>
+</div>

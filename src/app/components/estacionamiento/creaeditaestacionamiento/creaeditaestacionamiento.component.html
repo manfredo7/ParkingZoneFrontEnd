@@ -1,0 +1,107 @@
+<div class="title-container">
+  <h1 class="title">Registro de Estacionamientos</h1>
+</div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <div class="form-columns">
+      <div class="form-column">
+        <mat-form-field *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" readonly />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+          <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Dirección</mat-label>
+          <input matInput formControlName="direccion" />
+          <mat-error *ngIf="form.get('direccion')?.hasError('required')">
+            La dirección es obligatoria.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Capacidad</mat-label>
+          <input matInput formControlName="capacidad" />
+          <mat-error *ngIf="form.get('capacidad')?.hasError('required')">
+            La capacidad es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="form.get('capacidad')?.hasError('min')">
+            Ingrese un numero positivo.
+          </mat-error>
+          <mat-error *ngIf="form.get('capacidad')?.hasError('pattern')">
+            Ingrese un número válido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tarifa</mat-label>
+          <input matInput formControlName="tarifa" />
+          <mat-error *ngIf="form.get('tarifa')?.hasError('required')">
+            La tarifa es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="form.get('tarifa')?.hasError('min')">
+            Ingrese un numero positivo.
+          </mat-error>
+          <mat-error *ngIf="form.get('tarifa')?.hasError('pattern')">
+            Ingrese un número válido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-form-field>
+          <mat-label>Horario Operativo</mat-label>
+          <input matInput formControlName="hoperativo" />
+          <mat-error *ngIf="form.get('hoperativo')?.hasError('required')">
+            El horario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ventajas</mat-label>
+          <input matInput formControlName="ventaja" />
+          <mat-error *ngIf="form.get('ventaja')?.hasError('required')">
+            El campo no puede quedar vacío.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Desventajas</mat-label>
+          <input matInput formControlName="desventaja" />
+          <mat-error *ngIf="form.get('desventaja')?.hasError('required')">
+            El campo no puede quedar vacío.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tipo Estacionamiento</mat-label>
+          <mat-select formControlName="te">
+            <mat-option
+              *ngFor="let te of listaTestacionamientos"
+              [value]="te.idTestacionamiento"
+            >
+              {{ te.descripcionTestacionamiento }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('te')?.hasError('required')">
+            Seleccione un tipo de estacionamiento.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary">Registrar</button>
+      <button mat-raised-button color="warn" routerLink="/estacionamiento">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

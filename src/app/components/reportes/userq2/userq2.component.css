@@ -1,0 +1,36 @@
+/* Asegúrate de agregar esto a tu archivo CSS */
+
+.title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .form-field {
+    width: 200px;
+  }
+  
+  .chart-container {
+    width: 80%;
+    max-width: 800px;
+  }
+  

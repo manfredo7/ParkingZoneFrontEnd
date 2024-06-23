@@ -1,0 +1,104 @@
+<div class="title-container">
+  <h1 class="title">Ingresar Rango de fechas</h1>
+</div>
+
+<div class="container" style="text-align: center">
+  <form [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha y Hora Inicial</mat-label>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="picker"
+        formControlName="fechahora1"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        aria-label="Toggle datetime picker"
+        (click)="picker.open(); $event.stopPropagation()"
+        type="button"
+      >
+        <mat-icon>event</mat-icon>
+      </button>
+      <ngx-mat-datetime-picker
+        #picker
+        [showSpinners]="showSpinners"
+        [showSeconds]="showSeconds"
+        [stepHour]="stepHour"
+        [stepMinute]="stepMinute"
+        [stepSecond]="stepSecond"
+        [touchUi]="touchUi"
+        [color]="color"
+        [enableMeridian]="enableMeridian"
+        [disableMinute]="disableMinute"
+        [hideTime]="hideTime"
+      >
+      </ngx-mat-datetime-picker>
+
+      <mat-error *ngIf="form.get('fechahora1')?.hasError('required')">
+        La fecha y hora son obligatorias.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha y Hora Final</mat-label>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="picker1"
+        formControlName="fechahora2"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        aria-label="Toggle datetime picker"
+        (click)="picker1.open(); $event.stopPropagation()"
+        type="button"
+      >
+        <mat-icon>event</mat-icon>
+      </button>
+      <ngx-mat-datetime-picker
+        #picker1
+        [showSpinners]="showSpinners"
+        [showSeconds]="showSeconds"
+        [stepHour]="stepHour"
+        [stepMinute]="stepMinute"
+        [stepSecond]="stepSecond"
+        [touchUi]="touchUi"
+        [color]="color"
+        [enableMeridian]="enableMeridian"
+        [disableMinute]="disableMinute"
+        [hideTime]="hideTime"
+      >
+      </ngx-mat-datetime-picker>
+
+      <mat-error *ngIf="form.get('fechahora2')?.hasError('required')">
+        La fecha y hora son obligatorias.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <button mat-raised-button color="primary" (click)="handleSubmit()">
+      Buscar
+    </button>
+  </form>
+</div>
+
+<br />
+
+<div class="title-container">
+  <div style="text-align: center" class="title"></div>
+  <div style="text-align: center" class="chart-container">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    >
+    </canvas>
+  </div>
+</div>

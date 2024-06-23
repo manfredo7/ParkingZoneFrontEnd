@@ -1,0 +1,44 @@
+.mat-toolbar {
+    display: flex;
+    height: 100px;
+    background-color: #E6CB86;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .large-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .large-icon {
+    font-size: 70px; /* Ajusta este tamaño según tus necesidades */
+    width: 90px; /* Asegúrate de que el ancho del ícono sea suficiente */
+    height: 70px; /* Asegúrate de que la altura del ícono sea suficiente */
+  }
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Ajusta este tamaño según tus necesidades */
+    height: 90px; /* Ajusta este tamaño según tus necesidades */
+  }
+  .diviconpkz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .iconpkz{
+    width: 90x; /* Ajusta este tamaño según tus necesidades */
+    height: 90px; 
+  }
+  .bold-text {
+    font-weight: bold;
+    font-size: larger;
+  }
+  
+

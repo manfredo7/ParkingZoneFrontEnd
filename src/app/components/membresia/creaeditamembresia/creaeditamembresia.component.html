@@ -1,0 +1,84 @@
+<div class="title-container"><h1 class="title">Registro de Membresia</h1></div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <mat-form-field *ngIf="edicionm">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly /> </mat-form-field
+    ><br />
+    <br />
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="precio" />
+      <mat-error *ngIf="form.get('precio')?.hasError('required')"
+        >El precio es obligatorio.</mat-error
+      >
+      <mat-error *ngIf="form.get('precio')?.hasError('min')"
+        >Ingrese un numero positivo.</mat-error
+      >
+      <mat-error *ngIf="form.get('precio')?.hasError('pattern')"
+        >Ingrese un número válido.</mat-error
+      >
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>FechaInicio</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="fechaInicio"
+        [min]="today"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.get('fechaInicio')?.hasError('required')"
+        >La fecha es obligatoria.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>FechaFin</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="fechaFin" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker1"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="form.get('fechaFin')?.hasError('required')"
+        >La fecha es obligatoria.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <input matInput formControlName="descripcion" />
+      <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+        >La descripcion es obligatoria.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Descuento</mat-label>
+      <input matInput formControlName="descuento" />
+      <mat-error *ngIf="form.get('descuento')?.hasError('required')"
+        >El descuento es obligatorio.</mat-error
+      >
+      <mat-error *ngIf="form.get('descuento')?.hasError('min')"
+        >Ingrese un numero positivo.</mat-error
+      >
+      <mat-error *ngIf="form.get('descuento')?.hasError('pattern')"
+        >Ingrese un número válido.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary">Registrar</button>
+    <button mat-raised-button color="warn" routerLink="/membresia">
+      Cancelar
+    </button>
+  </form>
+</div>

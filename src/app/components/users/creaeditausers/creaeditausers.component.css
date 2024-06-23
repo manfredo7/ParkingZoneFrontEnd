@@ -1,0 +1,43 @@
+/* Ajustes para el formulario de registro de usuarios */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .form-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .form-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .title-container {
+    text-align: center;
+    margin-bottom: 40px; 
+    margin-top: 60px;    
+  }
+  
+  .title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    color: #333;
+  }
